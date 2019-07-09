@@ -3,7 +3,10 @@ const whiteList = [
   '/admin/login',
   '/test',
   '/admin/teacher/edit/',
-  '/admin/student/edit/'
+  '/admin/student/edit/',
+
+
+  '/'
 ]
 
 export default whiteList

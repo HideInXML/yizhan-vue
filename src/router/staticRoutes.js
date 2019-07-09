@@ -1,3 +1,7 @@
+//前台界面
+import HelloWorld from "@/components/HelloWorld";
+//后台界面
+//@author:liuwen
 import AppLogin from '@/pages/login/AppLogin'
 import AppError401 from '@/pages/error/AppError401'
 import AppError404 from '@/pages/error/AppError404'
@@ -18,28 +22,45 @@ import FuncSiteConf from '@/pages/functions/site/FuncSiteConf'
 import FuncUserPassword from '@/pages/functions/user/FuncUserPassword'
 
 /* 静态页面路由 */
-const staticRoutes = [{
+const staticRoutes = [
+//前台路由
+{
+  path: '/',
+  name: 'HelloWorld',
+  component:HelloWorld
+
+},
+
+//后台路透
+//@author:liuwen
+{
   path: '/admin/login',
   name: 'Login',
   component: AppLogin
-}, {
+}, 
+{
   path: '/error/401',
   name: 'error401',
-  meta: {
+  meta: 
+  {
     errorPage: true
   },
   component: AppError401
-}, {
-  path: '*',
-  name: 'error404',
-  meta: {
-    errorPage: true
-  },
-  component: AppError404
-}, {
+}, 
+// {
+//   path: '*',
+//   name: 'error404',
+//   meta: 
+//   {
+//     errorPage: true
+//   },
+//   component: AppError404
+// }, 
+{
   path: '/admin',
   redirect: '/admin/index'
-}, {
+}, 
+{
   /* 以下为侧边菜单栏定义 */
   /* menu 表示此路由为侧边菜单栏 */
   /* 如果要继承layout布局，所以采用嵌套路由的写法 */
@@ -49,117 +70,141 @@ const staticRoutes = [{
   path: '/admin',
   component: TheLayout,
   menu: true,
-  children: [{
+  children: 
+  [{
     path: 'index',
     name: '首页',
     icon: 'el-icon-menu',
     component: FuncHome
   }]
-}, {
+}, 
+{
   /* 二级菜单 */
   path: '/admin/company',
   component: TheLayout,
   name: '公司',
   menu: true,
   icon: 'el-icon-s-cooperation',
-  children: [{
-    path: 'intro',
-    name: '介绍',
-    component: FuncCompanyIntro
-  }, {
-    path: 'info',
-    name: '公司信息',
-    component: FuncCompanyInfo
+  children: 
+  [{
+      path: 'intro',
+      name: '介绍',
+      component: FuncCompanyIntro
+    }, 
+    {
+      path: 'info',
+      name: '公司信息',
+      component: FuncCompanyInfo
   }]
-}, {
+}, 
+{
   /* 一级菜单 */
   path: '/admin',
   component: TheLayout,
   menu: true,
-  children: [{
+  children: 
+  [{
     path: 'admission',
     name: '招班动态',
     icon: 'el-icon-s-claim',
     component: FuncAdmission
   }]
-}, {
+}, 
+{
   /* 二级菜单 */
   path: '/admin/teacher',
   component: TheLayout,
   name: '教师',
   menu: true,
   icon: 'el-icon-s-custom',
-  children: [{
+  children: 
+  [{
+
     path: 'list',
     name: '教师列表',
     component: FuncTeachList
-  }, {
-    path: 'add',
-    name: '添加教师',
-    component: FuncTeachAdd
+    }, 
+    {
+      path: 'add',
+      name: '添加教师',
+      component: FuncTeachAdd
   }]
-}, {
+}, 
+{
   /* 不显示在菜单栏-编辑教师 */
   path: '/admin/teacher',
   component: TheLayout,
-  children: [{
+  children: 
+  [{
     path: 'edit/:id',
     component: FuncTeachEdit
   }]
-}, {
+}, 
+{
   /* 二级菜单 */
   path: '/admin/student',
   component: TheLayout,
   name: '学员风采',
   menu: true,
   icon: 'el-icon-s-flag',
-  children: [{
+  children: 
+  [{
     path: 'list',
     name: '学员列表',
     component: FuncStudList
-  }, {
+  }, 
+  {
     path: 'add',
     name: '添加学员',
     component: FuncStudAdd
   }]
-}, {
+}, 
+{
   /* 不显示在菜单栏-编辑学员 */
   path: '/admin/student',
   component: TheLayout,
-  children: [{
+  children: 
+  [{
     path: 'edit/:id',
     component: FuncStudEdit
   }]
-}, {
+}, 
+{
   /* 一级菜单 */
   path: '/admin/sign',
   component: TheLayout,
   menu: true,
-  children: [{
+  children: 
+  [{
     path: 'list',
     name: '我要保名',
     icon: 'el-icon-phone',
     component: FuncSignList
   }]
-}, {
+}, 
+{
   path: '/admin/site',
   component: TheLayout,
   name: '站点配置',
   icon: 'el-icon-s-platform',
   menu: true,
-  children: [{
+  children: 
+  [{
     path: 'homepage',
     name: '站点首页',
     component: FuncSiteHome
-  }, {
+  }, 
+  {
     path: 'config',
     name: '配置信息',
     component: FuncSiteConf
   }]
-}, {
+}, 
+{
   path: '/admin/user',
   component: TheLayout,
-  children: [{
+  children: 
+  [{
     path: 'password',
     component: FuncUserPassword
   }]
