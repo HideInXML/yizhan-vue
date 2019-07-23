@@ -5,8 +5,15 @@ const whiteList = [
   '/admin/teacher/edit/',
   '/admin/student/edit/',
 
+  //前台所有路由进入白名单
+  '/',
+  '/companyIntroduction',
+  '/contactUs',
+  '/mainPage',
+  '/mateAchievement',
+  '/recruitClassInfo',
+  '/teacherStrength',
 
-  '/'
 ]
 
 export default whiteList

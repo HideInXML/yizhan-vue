@@ -1,5 +1,11 @@
 //前台界面
-import HelloWorld from "@/components/HelloWorld";
+import HelloYiZhan from "@/components/HelloYiZhan";
+import CL_index from "@/components/menuList/companyIntroduction/CI_index"
+import CU_index from "@/components/menuList/contactUs/CU_index"
+import MP_index from "@/components/menuList/mainPage/MP_index"
+import MA_index from "@/components/menuList/mateAchievement/MA_index"
+import RCI_index from "@/components/menuList/recruitClassInfo/RCI_index"
+import TS_index from "@/components/menuList/teacherStrength/TS_index"
 //后台界面
 //@author:liuwen
 import AppLogin from '@/pages/login/AppLogin'
@@ -26,8 +32,41 @@ const staticRoutes = [
 //前台路由
 {
   path: '/',
-  name: 'HelloWorld',
-  component:HelloWorld
+  name: 'HelloYiZhan',
+  component:HelloYiZhan,
+  children:  
+  [
+    {
+      path: 'companyIntroduction',
+      name: '公司介绍',
+      component: CL_index
+    },
+    {
+      path: 'contactUs',
+      name: '联系我们',
+      component: CU_index
+    },
+    {
+      path: 'mainPage',
+      name: '网站首页',
+      component: MP_index
+    },
+    {
+      path: 'mateAchievement',
+      name: '校友风采',
+      component: MA_index
+    },
+    {
+      path: 'recruitClassInfo',
+      name: '招班信息',
+      component: RCI_index
+    },
+    {
+      path: 'teacherStrength',
+      name: '师资力量',
+      component: TS_index
+    },
+  ]
 
 },
 
@@ -47,15 +86,15 @@ const staticRoutes = [
   },
   component: AppError401
 }, 
-// {
-//   path: '*',
-//   name: 'error404',
-//   meta: 
-//   {
-//     errorPage: true
-//   },
-//   component: AppError404
-// }, 
+{
+  path: '*',
+  name: 'error404',
+  meta: 
+  {
+    errorPage: true
+  },
+  component: AppError404
+}, 
 {
   path: '/admin',
   redirect: '/admin/index'

@@ -18,5 +18,7 @@ export default {
   /* 删除此行：text-align: center; */
   color: #2c3e50;
   /* 删除此行：margin-top: 60px; */
+  width: 100%;
+  height: 100%;
 }
 </style>
