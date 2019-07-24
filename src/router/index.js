@@ -27,9 +27,11 @@ const pass_check = (to_path) => {
   // console.log(to_path)
   let is_check = true // 是否检查，默认检查 true
   whiteList.forEach(w => {
-    if (to_path.indexOf(w) !== -1)
+    // to_path.indexOf(w) !== -1
+    if (w !== '/' && to_path.indexOf(w) !== -1)
       is_check = false
   })
+  console.log("is_check:", is_check)
   return is_check
 }
 
@@ -49,21 +51,21 @@ const page_permission = (permissions, to_path, next) => {
 /* 权限控制 */
 router.beforeEach((to, from, next) => {
   /* 忽略错误页面的权限判断 */
-  if (to.meta.errorPage) 
+  if (to.meta.errorPage)
   {
     return next()
   }
   /* 进入登录页面将注销用户信息 */
-  if (to.path === '/admin/login') 
+  if (to.path === '/admin/login')
   {
     sessionStorage.removeItem('user-info')
     localStorage.removeItem('user-token')
   }
-  if (pass_check(to.path)) 
+  if (pass_check(to.path))
   {
     let user_info = JSON.parse(sessionStorage.getItem('user-info'))
     /* 上次会话结束，重新获取用户信息 */
-    if (!user_info) 
+    if (!user_info)
     {
       requestUserInfo().then(user_info => {
         const permissions = user_info.permissions || []
@@ -73,7 +75,7 @@ router.beforeEach((to, from, next) => {
         /* 获取用户信息异常 */
         console.error(err)
       })
-    } else 
+    } else
     {
       /* 已登录时判断页面权限 */
       const permissions = user_info.permissions || []
