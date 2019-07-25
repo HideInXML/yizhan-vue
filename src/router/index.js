@@ -24,7 +24,7 @@ const router_init = (permissions) => {
 
 /* 根据设置的白名单，跳过此路由权限检查 */
 const pass_check = (to_path) => {
-  console.log(to_path)
+  // TODO 移除编辑页面白名单，移除indexOf()判断白名单的方式
   let is_check = true // 是否检查，默认检查 true
   whiteList.forEach(w => {
     if (to_path === '/')
@@ -32,7 +32,6 @@ const pass_check = (to_path) => {
     if (w !== '/' && to_path.indexOf(w) !== -1)
       is_check = false
   })
-  console.log("is_check:", is_check)
   return is_check
 }
 
