@@ -24,10 +24,11 @@ const router_init = (permissions) => {
 
 /* 根据设置的白名单，跳过此路由权限检查 */
 const pass_check = (to_path) => {
-  // console.log(to_path)
+  console.log(to_path)
   let is_check = true // 是否检查，默认检查 true
   whiteList.forEach(w => {
-    // to_path.indexOf(w) !== -1
+    if (to_path === '/')
+      is_check = false
     if (w !== '/' && to_path.indexOf(w) !== -1)
       is_check = false
   })
