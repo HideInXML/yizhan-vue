@@ -1,5 +1,8 @@
 <template>
-  <div class="hello">
+  <div class="container">
+    <background v-if="backgroundShow" @closeBackground="closeBackground"></background>
+  <div class="hello" v-if="!backgroundShow">
+    
     <!--广告栏 -->
     <div class="adv-wrapper">
       <div class="adv-wrapper-text">&lt;广告&gt;</div>
@@ -10,33 +13,122 @@
     </div>
 
     <!--消除fixed布局多余部分 -->
-    <div style="height:100px">
+    <!-- <div style="height:100px;width: 100%;">
 
-    </div>
+    </div> -->
     <!--界面主体 -->
     <div class="hellowyizhan-container">
+      <el-backtop target=".hellowyizhan-container" style="width:100px">
+            <div
+            style="{
+              height: 100%;
+              width: 100%;
+              background-color: #f2f5f6;
+              box-shadow: 0 0 6px rgba(0,0,0, .12);
+              text-align: center;
+              line-height: 40px;
+              color: #1989fa;
+            }"
+          >
+            <a style="color:black">回到顶部</a>
+          </div>
+      </el-backtop>
       <router-view></router-view>
-    </div>
-    
-    <!--底部导航 -->
-    <div class="hellowyizhan-footer">
 
+
+      <!--底部导航 -->
+      <div class="hellowyizhan-footer">
+
+      </div>
+      <vueCanvasNest :config="{color:'0,0,0',opacity: .9,count: 500,zIndex: -1,}"></vueCanvasNest>
     </div>
+
+  </div>
   </div>
 </template>
 
 <script>
 import yizhanMenu from '@/components/menu/YizhanMenu'
+import background from '@/components/Opening_Animation.vue'
+import vueCanvasNest from 'vue-canvas-nest'
+
 export default {
   components: {
     yizhanMenu,
+    background,
+    vueCanvasNest 
   },
   data () {
     return {
+      backgroundShow:true,
       
     }
   },
+  mounted() {
 
+    setTimeout(()=>{
+      // this.removejscssfile('static/sourceMaterial/mo.min.js','js')
+      // this.removejscssfile('static/sourceMaterial/index.js','js')
+      // this.removeCss('static/sourceMaterial/cssans.min.css')
+      this.closeBackground()
+
+    },2000)
+
+
+  },
+  methods:{
+    closeBackground(){
+      //暂停动画
+      burst.stop()
+      //销毁组件
+      this.backgroundShow = false
+    },
+    //移除js,css
+    removejscssfile(filename,filetype){
+      let targetelement = (filetype=="js")? "script" :(filetype=="css")? "link" : "none"
+      var targetattr = (filetype=="js")?"src" : (filetype=="css")? "href" :"none"
+      var allsuspects = document.getElementsByTagName(targetelement)
+      for (var i=allsuspects.length; i>=0;i--){
+        if (allsuspects[i] && allsuspects[i].getAttribute(targetattr) != null && allsuspects[i].getAttribute(targetattr).indexOf(filename)!=-1)
+        allsuspects[i].parentNode.removeChild(allsuspects[i])
+      }
+    },
+  //移除css
+  /**
+   * 删除 link 文件
+   * @param href
+   */
+  removeCss(href) {
+      var links = document.getElementsByTagName("link");
+      for (var i = 0; i < links.length; i++) {
+          var _href = links[i].href;
+          if (links[i] && links[i].href && links[i].href.indexOf(href) != -1) {
+              links[i].parentNode.removeChild(links[i]);
+          }
+      }
+  },
+    /**
+     * 加载 link 文件
+     * @param href
+     */
+    loadCss(href) {
+        var addSign = true;
+        var links = document.getElementsByTagName("link");
+        for (var i = 0; i < links.length; i++) {
+            if (links[i] && links[i].href && links[i].href.indexOf(href) != -1) {
+                addSign = false;
+            }
+        }
+        if (addSign) {
+            var $link = document.createElement("link");
+            $link.setAttribute("rel", "stylesheet");
+            $link.setAttribute("type", "text/css");
+            $link.setAttribute("href", href);
+            document.getElementsByTagName("head").item(0).appendChild($link);
+        }
+    },
+  }
+  
 }
 </script>
 
@@ -45,6 +137,8 @@ export default {
 .hello{
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  opacity: 0.9;
   .adv-wrapper{
     display: block;
 		position: fixed;
@@ -68,6 +162,7 @@ export default {
     }
   }
   .hellowyizhan-header{
+    z-index: 9999;
     background:rgba(45,45,45,0.98);
     position: fixed;
     width: 100%;
@@ -75,14 +170,21 @@ export default {
     height: 60px;
   }
   .hellowyizhan-container{
-      background: red;
+      // background: red;
+      overflow: scroll;
       width: 100%;
-      min-height: -webkit-fill-available;
+      height: 100%;
+      position: relative;
+      top: 100px;
+      // min-height: 200px;
+      // opacity: 0.9;
   }
   .hellowyizhan-footer{
-    background: blue;
+    // position: relative;
+    // background: blue;
     width: 100%;
     height: 200px;
   }
+
 }
 </style>
