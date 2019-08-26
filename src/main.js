@@ -11,6 +11,7 @@ import '@/assets/css/common.scss'
 import VueScroll from 'vuescroll'
 import 'vuescroll/dist/vuescroll.css'
 
+import 'lib-flexible/flexible.js'
 // Mock.mockData()
 Vue.config.productionTip = true
 

@@ -136,9 +136,9 @@ methods: {}
 </script>
 <style lang='scss' scoped >
 // @import url(./static/sourceMaterial/background/css/style.css);
-html, body {
-  margin: 0;
-}
+// html, body {
+//   margin: 0;
+// }
 
 #particle-canvas {
   width: 100%;
