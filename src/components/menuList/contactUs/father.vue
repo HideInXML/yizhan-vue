@@ -8,15 +8,16 @@
        
 </child> -->
     {{data}}
-    <slot name="pane1">我是b组件</slot>
-    <child :data='data'>
+    <button @click="bc">按钮</button>
+    <!-- <slot name="pane1">我是b组件</slot> -->
+    <!-- <child :data='data'>
         <template slot="pane2">
             <div>
                 
             </div>
         </template>
        
-    </child>
+    </child> -->
 </div>
 </template>
 
@@ -26,7 +27,7 @@ export default {
     props:{
         data:{
             type:String,
-            default:''
+            default:'123'
         }
     },
 data () {
@@ -35,7 +36,11 @@ return {
 },
 components: {child},
 
-methods: {}
+methods: {
+    bc(){
+       this.$emit('buttonClick','333') 
+    }
+}
 }
 
 </script>
