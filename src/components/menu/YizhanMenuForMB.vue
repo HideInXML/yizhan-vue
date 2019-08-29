@@ -5,7 +5,8 @@
             align-items:center;">
 <el-dropdown trigger="click"  @command="handleCommand" >
   <!-- <el-button icon="el-icon-menu" type="primary"></el-button> -->
-  <i class="el-icon-connection" style="font-size: x-large;color: white;position: relative;left: 10px;"></i>
+  
+  <i style="font-size: large;color: white;position: relative;left: 10px;"> 首页<i class="el-icon-caret-bottom" ></i></i>
   <el-dropdown-menu slot="dropdown">
     <el-dropdown-item command="1">首页</el-dropdown-item>
     <!--<el-dropdown-item command="2">公司介绍</el-dropdown-item>
