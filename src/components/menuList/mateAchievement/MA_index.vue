@@ -12,7 +12,10 @@
     >
     </el-switch>
     <div class="mateAchieveMent_main">
-
+        
+    </div>
+        <div class="mateAchieveMent_main1">
+        
     </div>
 </div>
 </template>
@@ -49,8 +52,14 @@ methods: {
         z-index: 9;
     }
     .mateAchieveMent_main{
-        height: 100%;
-        width: 100%;
+        height: 100px;
+        width: 100px;
+        background: red;
+    }
+        .mateAchieveMent_main1{
+        height: 100px;
+        width: 100px;
+        background: green;
     }
 }
 </style>

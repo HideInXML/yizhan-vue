@@ -25,7 +25,7 @@
 import child from './child'
 export default {
     props:{
-        data:{
+        data1:{
             type:String,
             default:'123'
         }

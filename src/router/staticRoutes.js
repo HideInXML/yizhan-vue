@@ -6,6 +6,12 @@ import MP_index from "@/components/menuList/mainPage/MP_index"
 import MA_index from "@/components/menuList/mateAchievement/MA_index"
 import RCI_index from "@/components/menuList/recruitClassInfo/RCI_index"
 import TS_index from "@/components/menuList/teacherStrength/TS_index"
+    //「前台手机路由」
+import ASFM_index from '@/components/menuListForMb/achievementShow/ASFM_index'
+import CUFM_index from '@/components/menuListForMb/contactUs/CUFM_index'
+import MPFM_index from '@/components/menuListForMb/mainPage/MPFM_index'
+
+
 //后台界面
 //@author:liuwen
 import AppLogin from '@/pages/login/AppLogin'
@@ -65,6 +71,22 @@ const staticRoutes = [
           path: 'teacherStrength',
           name: '师资力量',
           component: TS_index
+        },
+        //手机路由
+        {
+          path: 'mainPageForMB',
+          name: '手机主页',
+          component: MPFM_index
+        },
+        {
+          path: 'achievementShowForMB',
+          name: '手机作品展示',
+          component: ASFM_index
+        },
+        {
+          path: 'contactUsForMB',
+          name: '手机联系我们',
+          component: CUFM_index
         },
       ]
 

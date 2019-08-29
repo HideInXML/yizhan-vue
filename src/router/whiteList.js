@@ -13,6 +13,9 @@ const whiteList = [
   '/mateAchievement',
   '/recruitClassInfo',
   '/teacherStrength',
+  '/mainPageForMB',
+  '/achievementShowForMB',
+  '/contactUsForMB',
 
 ]
 

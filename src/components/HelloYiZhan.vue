@@ -1,54 +1,57 @@
 <template>
   <div class="container">
     <background v-if="backgroundShow" @closeBackground="closeBackground"></background>
-  <div class="hello" v-if="!backgroundShow">
-    
-    <!--广告栏 -->
-    <div class="adv-wrapper">
-      <div class="adv-wrapper-text">&lt;广告&gt;</div>
-    </div>
-    <!--导航栏 -->
-    <div class="hellowyizhan-header">
-      <yizhanMenu v-if="menuSign"></yizhanMenu>
-      <yizhanMenuForMB v-if="!menuSign"></yizhanMenuForMB>
-    </div>
-
-    <!--消除fixed布局多余部分 -->
-    <!-- <div style="height:100px;width: 100%;">
-
-    </div> -->
-    <!--界面主体 -->
-    <div class="hellowyizhan-container">
-      <el-backtop target=".hellowyizhan-container" style="width:100px">
-            <div
-            style="{
-              height: 100%;
-              width: 100%;
-              background-color: #f2f5f6;
-              box-shadow: 0 0 6px rgba(0,0,0, .12);
-              text-align: center;
-              line-height: 40px;
-              color: #1989fa;
-            }"
-          >
-            <a style="color:black">回到顶部</a>
-          </div>
-      </el-backtop>
-      <router-view></router-view>
-
-
-      <!--底部导航 -->
-      <div class="hellowyizhan-footer">
-
+    <div class="hello" v-if="!backgroundShow">
+      
+      <!--广告栏 -->
+      <div class="adv-wrapper">
+        <div class="adv-wrapper-text">&lt;广告&gt;</div>
       </div>
-      <!-- <vueCanvasNest :config="{color:'0,0,0',opacity: .9,count: 500,zIndex: -1,}"></vueCanvasNest> -->
-    </div>
+      <!--导航栏 -->
+      <div class="hellowyizhan-header">
+        <yizhanMenu v-if="menuSign"></yizhanMenu>
+        <yizhanMenuForMB v-if="!menuSign"></yizhanMenuForMB>
+      </div>
 
-  </div>
+      <!--消除fixed布局多余部分 -->
+      <!-- <div style="height:100px;width: 100%;">
+
+      </div> -->
+      <!--界面主体 -->
+      <div class="hellowyizhan-container">
+        <el-backtop target=".hellowyizhan-container" style="width:100px">
+              <div
+              style="{
+                height: 100%;
+                width: 100%;
+                background-color: #f2f5f6;
+                box-shadow: 0 0 6px rgba(0,0,0, .12);
+                text-align: center;
+                line-height: 40px;
+                color: #1989fa;
+              }"
+            >
+              <a style="color:black">回到顶部</a>
+            </div>
+        </el-backtop>
+        <router-view></router-view>
+
+
+        <!--底部导航 -->
+        <div class="hellowyizhan-footer">
+
+        </div>
+        <!-- <vueCanvasNest :config="{color:'0,0,0',opacity: .9,count: 500,zIndex: -1,}"></vueCanvasNest> -->
+      </div>
+
+    </div>
   </div>
 </template>
 
 <script>
+//引入vuex
+import { mapState } from 'vuex'
+
 import yizhanMenu from '@/components/menu/YizhanMenu'
 import yizhanMenuForMB from '@/components/menu/YizhanMenuForMB'
 import background from '@/components/Opening_Animation.vue'
@@ -83,6 +86,8 @@ export default {
     {
       this.menuSign = false
     }
+    //设备宽度存入vuex
+    this.width = this.screenWidth
     //2s后关闭动画
     setTimeout(()=>{
       // this.removejscssfile('static/sourceMaterial/mo.min.js','js')
@@ -95,7 +100,18 @@ export default {
 
 
   },
-      
+  computed:{
+    width:{
+        get()
+        {
+            return this.$store.state.deviceAttribute.width
+        },
+        set(v)
+        {
+            this.$store.commit('setWidth',v)
+        }
+    },
+  },
   methods:{
     closeBackground(){
       //暂停动画

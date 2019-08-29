@@ -8,11 +8,11 @@
   <i class="el-icon-connection" style="font-size: x-large;color: white;position: relative;left: 10px;"></i>
   <el-dropdown-menu slot="dropdown">
     <el-dropdown-item command="1">首页</el-dropdown-item>
-    <el-dropdown-item command="2">公司介绍</el-dropdown-item>
-    <el-dropdown-item command="3">师资力量</el-dropdown-item>
-    <el-dropdown-item command="4">校友风采</el-dropdown-item>
-    <el-dropdown-item command="5">招班信息</el-dropdown-item>
-    <el-dropdown-item command="6">联系我们</el-dropdown-item>
+    <!--<el-dropdown-item command="2">公司介绍</el-dropdown-item>
+    <el-dropdown-item command="3">师资力量</el-dropdown-item> -->
+    <el-dropdown-item command="2">作品展示</el-dropdown-item>
+    <!-- <el-dropdown-item command="5">招班信息</el-dropdown-item> -->
+    <el-dropdown-item command="3">联系我们</el-dropdown-item>
   </el-dropdown-menu>
 </el-dropdown>
 </div>
@@ -40,7 +40,7 @@ return {
 components: {},
 created(){
     //自动跳到主页
-    this.$router.push("/mainPage")
+    this.$router.push("/mainPageForMB")
 },
 
 methods: {
@@ -48,28 +48,17 @@ methods: {
         console.log(key)
         if(key == 1)
         {
-            this.$router.push("/mainPage")
+            this.$router.push("/mainPageForMB")
         }
         if(key == 2)
         {
-            this.$router.push("/companyIntroduction")
+            this.$router.push("/achievementShowForMB")
         }
         if(key == 3)
         {
-            this.$router.push("/teacherStrength")
+            this.$router.push("/contactUsForMB")
         }
-        if(key == 4)
-        {
-            this.$router.push("/mateAchievement")
-        }
-        if(key == 5)
-        {
-            this.$router.push("/recruitClassInfo")
-        }
-        if(key == 6)
-        {
-            this.$router.push("/contactUs")
-        }
+        
     }
 }
 }
