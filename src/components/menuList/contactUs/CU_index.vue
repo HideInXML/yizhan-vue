@@ -1,58 +1,37 @@
 <!--  -->
 <template>
 <div>
-    CU_index
-    <button @click="bc" style="width:50px" v-if="mainA">{{data}}</button>
-    <a id="aa"></a>
-    <input type="text" v-model="data">
-    <!-- <father :data="data">
 
-        <template slot="pane1">
-            <div>
-                
-            </div>
-        </template>
-    </father> -->
-    <!-- <father :data1 ='data'  @buttonClick='fatherClick'></father> -->
-    
+    <el-drawer
+        title="我是标题"
+        :visible.sync="drawer"
+        direction="rtl"
+        :before-close="handleClose">
+        <span>我来啦!</span>
+    </el-drawer>
 </div>
 </template>
 
 <script>
-import father from './father.vue'
 import { mapState } from 'vuex'
 export default {
 data () {
 return {
-    data:'0',
-    mainA:true
+    drawer:false
 };
 },
+mounted(){
+    this.drawer = true
+},
 components: {
-    father,
 },
 computed:{
-    width:{
-        get()
-        {
-            return this.$store.state.deviceAttribute.width
-        },
-        set(v)
-        {
-            this.$store.commit('setWidth',v)
-        }
-    },
 },
 methods: {
-    bc(){
-        // this.data
-        // this.data = '2'
-        // this.mainA = false
-        alert(this.width)
-    },
-    fatherClick(a){
-        console.log(a)
+    handleClose(done) {
+        this.$router.back()
     }
+    
 }
 }
 

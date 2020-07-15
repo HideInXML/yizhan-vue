@@ -34,7 +34,7 @@
 export default {
 data () {
 return {
-        url: 'static/pic/icon_designedBy_yanan/companyIcon.png'
+        url: "static/pic/icon_designedBy_yanan/companyIcon.png",
 };
 },
 

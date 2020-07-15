@@ -11,24 +11,28 @@
         @change="switchChange"
     >
     </el-switch>
-    <div class="mateAchieveMent_main">
-        
-    </div>
-        <div class="mateAchieveMent_main1">
-        
-    </div>
+    <!-- 渐入渐出动画 -->
+    <transition name="component-fade" mode="out-in">
+        <component :is="componentsName" style="padding-top: 50px;"></component>
+    </transition>
 </div>
 </template>
 
 <script>
+import MA_main from '@/components/menuList/mateAchievement/MA_main.vue'
+import MA_overAllView from '@/components/menuList/mateAchievement/MA_overAllView.vue'
 export default {
 data () {
 return {
-    switchSign:false
+    switchSign:false,
+    componentsName:'MA_main'
 };
 },
 
-components: {},
+components: {
+    MA_main,
+    MA_overAllView,    
+},
 
 computed: {},
 
@@ -36,30 +40,36 @@ computed: {},
 
 methods: {
     switchChange(){
-
+        console.log(this.switchSign)
+        if(this.switchSign)
+        {
+            this.componentsName = 'MA_overAllView'
+        }
+        else
+        {
+            this.componentsName = 'MA_main'
+        }
     }
 }
 }
 
 </script>
 <style lang='scss' scoped>
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity .3s ease;
+}
+.component-fade-enter, .component-fade-leave-to
+/* .component-fade-leave-active for below version 2.1.8 */ {
+  opacity: 0;
+}
 .mateAchieveMent{
     height: 100%;
+    overflow: scroll;
     .switchStyle{
         position: fixed;
         top: 120px;
         right: 30px;
-        z-index: 9;
-    }
-    .mateAchieveMent_main{
-        height: 100px;
-        width: 100px;
-        background: red;
-    }
-        .mateAchieveMent_main1{
-        height: 100px;
-        width: 100px;
-        background: green;
+        z-index: 999;
     }
 }
 </style>

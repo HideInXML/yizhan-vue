@@ -5,7 +5,7 @@
     default-active="1"
     mode="horizontal"
     @select="handleSelect"
-    background-color="rgba(45,45,45,0.98)"
+    background-color="black"
     text-color="#fff"
     active-text-color="#ffd04b">
         <el-menu-item index="1" class="yizhanMenu_item">首页</el-menu-item>

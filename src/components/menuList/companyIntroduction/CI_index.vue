@@ -1,8 +1,8 @@
 <!--  -->
 <template>
-<div>
+<div style="height:100%">
     
-    <el-collapse v-model="activeName" accordion>
+    <!-- <el-collapse v-model="activeName" accordion>
     <el-collapse-item title="一致性 Consistency" name="1">
         <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
         <div>在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
@@ -29,20 +29,39 @@
     <div style="height:200px">divdivdiv</div>
     <div style="height:200px">divdivdiv</div>
     <div style="height:200px">divdivdiv</div>
-    <div style="height:200px">divdivdiv</div><div style="height:200px">divdivdiv</div>
+    <div style="height:200px">divdivdiv</div><div style="height:200px">divdivdiv</div> -->
+    <TimeAxis></TimeAxis>
+
+    <!-- <transition name="component-fade" mode="out-in">
+        <component :is="componentsName" style="padding-top: 50px;"></component>
+    </transition> -->
+    <!-- <div class="background" :style="backgroundStyle"></div> -->
 </div>
 </template>
 
 <script>
+import TimeAxis from '@/components/menuList/companyIntroduction/TimeAxis.vue'
 export default {
 
 data () {
 return {
+    backgroundStyle:{        
+        backgroundImage: "url(" + require("../../../assets/img/mac_pic.jpg") + ")",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "157% 22%",
+        backgroundAttachment: "",
+        //backgroundSize: "25px auto",
+        //marginTop: "5px",
+        //opacity: "0.9",
+        //-moz-background-size:"100% 100%",
+        backgroundSize:"61% 76%"
+        },
     activeName: '1'
 };
 },
 
 components: {
+    TimeAxis
 },
 
 computed: {},
@@ -53,4 +72,11 @@ methods: {}
 
 </script>
 <style lang='scss' scoped>
+.background{
+    position: fixed;
+    top: 100px;
+    z-index: -1;
+    width: 100%;
+    height: calc(100% - 100px);
+}
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <background v-if="backgroundShow" @closeBackground="closeBackground"></background>
+  
     <div class="hello" v-if="!backgroundShow">
       
       <!--广告栏 -->
@@ -14,11 +15,14 @@
       </div>
 
       <!--消除fixed布局多余部分 -->
-      <!-- <div style="height:100px;width: 100%;">
+      <div style="height:100px;width: 100%;">
 
-      </div> -->
+      </div> 
       <!--界面主体 -->
       <div class="hellowyizhan-container">
+        <!--消除fixed布局多余部分 -->
+        <!-- <div style="height:100px;width: 100%;">
+        </div> -->
         <el-backtop target=".hellowyizhan-container" style="width:100px">
               <div
               style="{
@@ -38,13 +42,14 @@
 
 
         <!--底部导航 -->
-        <div class="hellowyizhan-footer">
+        <!-- <div class="hellowyizhan-footer">
 
-        </div>
+        </div> -->
         <!-- <vueCanvasNest :config="{color:'0,0,0',opacity: .9,count: 500,zIndex: -1,}"></vueCanvasNest> -->
       </div>
 
     </div>
+    
   </div>
 </template>
 
@@ -66,6 +71,11 @@ export default {
   },
   data () {
     return {
+              url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+        srcList: [
+          'https://fuss10.elemecdn.com/8/27/f01c15bb73e1ef3793e64e6b7bbccjpeg.jpeg',
+          'https://fuss10.elemecdn.com/1/8e/aeffeb4de74e2fde4bd74fc7b4486jpeg.jpeg'
+        ],
       backgroundShow:true,
       screenWidth: 0, // 屏幕尺寸
       menuSign:true,//移动适配标记
@@ -180,10 +190,11 @@ export default {
   height: 100%;
   overflow: hidden;
   opacity: 0.9;
+
   .adv-wrapper{
     display: block;
 		position: fixed;
-		z-index: 9999;
+		z-index: 999;
 		background: #444;
 		width: 100%;
 		right:0;
@@ -205,8 +216,8 @@ export default {
     }
   }
   .hellowyizhan-header{
-    z-index: 9999;
-    background:rgba(45,45,45,0.98);
+    z-index: 999;
+    background:black;
     // background: black;
     position: fixed;
     width: 100%;
@@ -217,9 +228,12 @@ export default {
       // background: red;
       overflow: scroll;
       width: 100%;
-      height: 100%;
-      position: relative;
+      //height: 100%;
+      position: absolute;
       top: 100px;
+      bottom: 0;
+      // position: relative;
+       
       // min-height: 200px;
       // opacity: 0.9;
   }
