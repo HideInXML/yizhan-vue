@@ -16,7 +16,7 @@
     "echarts": "^4.2.1",
     "element-ui": "^2.8.2",
     "font-awesome": "^4.7.0",
-    "gsap": "^2.1.2",
+    "gsap": "^3.6.0",
     "lib-flexible": "^0.3.2",
     "mockjs": "^1.0.1-beta3",
     "scriptjs": "^2.5.9",
